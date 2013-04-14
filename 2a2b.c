@@ -156,7 +156,10 @@ int main (void) {
 	user->guess[2] = 0;
 	user->guess[3] = 0;
 
-	printf("Pick four numbers from 0-9 (e.g. 1234)\n");
+	printf("\n**************************************\n");
+	printf("\n**   WELCOME TO 2A2B -- GOOD LUCK   **\n");
+	printf("\n**************************************\n");
+	printf("\nPick four numbers from 0-9 (e.g. 1234)\n");
 	if (get_numbers(user->num) < 0)
 		return 0;
 
@@ -193,7 +196,7 @@ int main (void) {
 	while ((!((comp->check[0] == 'A') && (comp->check[1] == 'A') && (comp->check[2] == 'A') && (comp->check[3] == 'A'))) &&
 		(!((user->check[0] == 'A') && (user->check[1] == 'A') && (user->check[2] == 'A') && (user->check[3] == 'A')))) {
 
-		printf("Take a guess:");
+		printf("\nTake a guess:");
 		if (get_numbers(user->guess) < 0) {
 			printf("error! failed to get your guess");
 			return 0;
@@ -216,6 +219,13 @@ int main (void) {
 
 		computer_guess();
 
+		printf("\nYour numbers: ");
+		for (i=0; i<4; i++) {
+			printf("%d", user->num[i]);
+		if (i==3)
+			printf("\n");
+		}
+
 		printf("Computer's Guess: ");
 		for (i=0; i<4; i++)
 			printf("%d", comp->guess[i]);
@@ -230,6 +240,7 @@ int main (void) {
 				countb++;
 		}
 		printf("%dA%dB\n", counta, countb);
+
 	}
 
 	if ((comp->check[0] == 'A') && (comp->check[1] == 'A') && (comp->check[2] == 'A') && (comp->check[3] == 'A'))
