@@ -1,5 +1,5 @@
 
-#  PIPETTE_DRIVER v0.01
+#  PIPETTE_DRIVER v0.02
 #
 #    controls a peristaltic pump motor for 
 #    a low-cost automatic pipette
@@ -23,13 +23,17 @@
 #  The author can be reached at nathanielchen1(at)gmail.com
 
 
-from sys import argv
 import RPi.GPIO as GPIO
 import time
 
 #TODO eventually we want this to be in mL or uL
-#for now, in seconds
-gpio_pin, motor_freq, motor_time = argv
+#Prompt user for inputs - for now, in seconds
+print "Which GPIO pin?"
+gpio_pin = int(raw_input(">"))
+print "how many pulses per second?"
+motor_freq = int(raw_input(">"))
+print "how many seconds?"
+motor_time = int(raw_input(">"))
 
 GPIO.cleanup()
 #use RPi board numbering, not broadcom
@@ -47,4 +51,3 @@ while counter < motor_freq * motor_time:
 GPIO.output(gpio_pin, GPIO.LOW)
 GPIO.cleanup()
 
-#TODO include option for running until user stops it, add an argv
